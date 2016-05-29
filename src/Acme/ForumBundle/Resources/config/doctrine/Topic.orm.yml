@@ -1,0 +1,20 @@
+Feniu\ForumBundle\Entity\Topic:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        categoryId:
+            type: integer
+            column: category_id
+        userId:
+            type: integer
+            column: user_id
+    lifecycleCallbacks: {  }

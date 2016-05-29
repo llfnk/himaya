@@ -1,0 +1,54 @@
+<?php
+
+// src/Acme/UserBundle/Entity/User.php
+
+namespace Feniu\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\EntityListeners;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user_events")
+ */
+class UserNotification {
+
+    const UserNotification = 'Feniu\UserBundle\Entity\UserNotification';
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text")
+     */
+    protected $text;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    private $Date;
+
+    /**
+     * @var from
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *
+     */
+    protected $user;
+
+    /**
+     * @ORM\Column(type="boolean", name="is_readed", options={"default": false})
+     */
+    private $is_readed;
+
+    
+
+}

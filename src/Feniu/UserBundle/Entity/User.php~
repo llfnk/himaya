@@ -1,0 +1,69 @@
+<?php
+
+// src/Acme/UserBundle/Entity/User.php
+
+namespace Feniu\UserBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
+ */
+class User extends BaseUser {
+
+    const User = 'Feniu\UserBundle\Entity\User';
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="surname", type="string", length=255)
+     */
+    protected $surname;
+
+    /**
+     * @var UserUserData[]
+     *
+     * @ORM\OneToOne(targetEntity="UserData", mappedBy="userlogin", cascade={"persist"})
+     */
+    protected $useruserdata;
+
+    /**
+     * @var company[]
+     *
+     * @ORM\OneToOne(targetEntity="Feniu\CompanyBundle\Entity\Company", mappedBy="user")
+     */
+    protected $company;
+    
+    /**
+     * @var BusinessUser[]
+     *
+     * @ORM\OneToOne(targetEntity="Feniu\CompanyBundle\Entity\BusinessUser", mappedBy="user", cascade={"persist"})
+     */
+    protected $businessUser;
+
+    /**
+     * Date/Time of the last activity
+     *
+     * @var \Datetime
+     * @ORM\Column(name="last_activity_at", type="datetime", nullable=true)
+     */
+    protected $lastActivityAt;
+
+    
+}

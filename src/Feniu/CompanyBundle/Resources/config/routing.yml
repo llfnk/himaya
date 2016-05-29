@@ -1,0 +1,3 @@
+feniu_company_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: FeniuCompanyBundle:Default:index }

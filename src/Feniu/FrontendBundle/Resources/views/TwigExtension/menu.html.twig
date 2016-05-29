@@ -1,0 +1,16 @@
+<li class='has-sub'>
+                        <a href='#'>
+                            <i class="fa fa-pencil"></i> 
+                            <span>Forum</span>
+                        </a>
+                        <ul>
+                            {% for category in categories %}
+                                <li>
+                                    <a href="{{ path('feniu_frontend_forum', {'category': category.slug}) }}">
+                                        <span>{{ category.name }}</span>
+                                    </a>
+                                </li>
+
+                            {% endfor %}
+                        </ul>
+                    </li>

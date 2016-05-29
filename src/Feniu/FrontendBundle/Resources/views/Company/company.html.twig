@@ -1,0 +1,128 @@
+{% extends 'FeniuFrontendBundle::layout_main.html.twig' %}
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+
+    <!-- Main Container starts -->
+    <div class="main-container-full">
+
+        <!-- Container fluid Starts -->
+        <div class="container-fluid">
+
+            <!-- Spacer starts -->
+            <div class="spacer">
+
+                <!-- Row Starts -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sx-12 col-sm-12">
+                        <ul id="myTab" class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#company" data-toggle="tab">Koncern</a>
+                            </li>
+                            {% for business in company.Business %}
+                                <li>
+                                    <a href="#business_{{ loop.index }}" data-toggle="tab"><i class="fa fa-info-circle"></i> {{ business.name }}</a>
+                                </li>
+
+                            {% endfor %}
+
+
+                            <li>
+                                <a href="#addBusiness" data-toggle="tab"><i class="fa fa-plus-circle"></i> Dodaj firmę</a>
+                            </li>
+
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane fade in active" id="company">
+                                <p class="no-margin">
+
+                                    Nazwa:   {{  company.name }} <br>
+                                    Stan konta: 0 $ <br>
+                                    Pracownicy: 0
+
+                                </p>
+                            </div>
+                            {% for business in company.Business %}
+
+                                <div class="tab-pane fade" id="business_{{ loop.index }}">
+                                    <p class="no-margin">
+
+                                        Nazwa:   {{  business.name }} <br>
+                                        Stan konta: 0 $ <br>
+                                        Pracownicy: 0
+
+                                    </p>
+                                </div>
+                            {% endfor %}      
+
+
+
+
+                            <div class="tab-pane fade" id="addBusiness">
+                                <p class="no-margin">
+                                <div class="table-responsive">
+
+
+                                    {{ form_start(form) }}
+                                    <div class="blog-body">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <label class="control-label">Imię:</label>
+                                                    {{ form_widget(form.name, { 'attr': {'class': 'form-control'}  }) }}
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        {{ form_widget(form.zapisz, { 'attr': {'class': 'form-control'} }) }}
+                                    </div>
+                                    {{ form_end(form) }}
+
+
+
+                                </div>  
+
+                                </p>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Row Ends -->
+
+
+
+            </div>
+            <!-- Spacer ends -->
+
+        </div>
+        <!-- Container fluid ends -->
+
+    </div>
+    <!-- Main Container ends -->
+
+{% endblock %}
+
+
+{#    {% block javascripts %}
+        <script src="{{ asset('bundles/feniufrontend/js/summernote/summernote.js') }}" type="text/javascript"></script>
+
+        
+{% endblock %}#}
+
+
+{% block javascripts %}
+    {{ parent() }} 
+
+{% endblock %}
+
+

@@ -1,0 +1,7 @@
+feniu_forum_admin_category:
+    resource: "@FeniuForumBundle/Resources/config/routing/category.yml"
+    prefix:   /admin/category
+
+feniu_forum_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: FeniuForumBundle:Default:index }

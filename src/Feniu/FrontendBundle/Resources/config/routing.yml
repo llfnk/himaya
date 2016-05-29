@@ -1,0 +1,88 @@
+feniu_frontend_homepage:
+    path:     /
+    defaults: { _controller: FeniuFrontendBundle:Default:index }
+    
+feniu_frontend_user_email:
+    path:     /wiadomosci
+    defaults: { _controller: FeniuFrontendBundle:User:email }
+    
+feniu_frontend_user_email_send:
+    path:     /wiadomosci/wyslij
+    defaults: { _controller: FeniuFrontendBundle:User:emailSend }    
+
+
+feniu_frontend_user_profil:
+    path:     /profil/{slug}
+    defaults: { _controller: FeniuFrontendBundle:User:profil }
+    
+feniu_frontend_forum:
+    path:     /forum/{category}
+    defaults: { _controller: FeniuFrontendBundle:Forum:index }
+    
+feniu_frontend_forum_post:
+    path:     /forum/{category}/{id}
+    defaults: { _controller: FeniuFrontendBundle:Forum:post }
+    
+feniu_frontend_user_edit:
+    path:     /uzytkownik/ustawienia
+    defaults: { _controller: FeniuFrontendBundle:User:index }    
+    
+feniu_frontend_user_edit_go:
+    path:     /uzytkownik/ustawienia/edytuj
+    defaults: { _controller: FeniuFrontendBundle:User:edit } 
+    options:
+        expose: true
+        
+feniu_frontend_company_new:
+    path:     /koncern/stworz
+    defaults: { _controller: FeniuFrontendBundle:Company:index }        
+    
+feniu_frontend_company_show:
+    path:     /koncern/pokaz
+    defaults: { _controller: FeniuFrontendBundle:Company:showCompany }
+    
+feniu_frontend_business_show_offer:
+    path:     /koncern/oferty-pracy
+    defaults: { _controller: FeniuFrontendBundle:Company:showBusinessOffer }
+    
+    
+feniu_frontend_forum_post_add:
+    path:     /forum/post/edit/dodaj
+    defaults: { _controller: FeniuFrontendBundle:Forum:postAdd }    
+    options:
+        expose: true
+        
+feniu_frontend_forum_topic_add:
+    path:     /forum/topic/edit/dodaj
+    defaults: { _controller: FeniuFrontendBundle:Forum:topicAdd }    
+    options:
+        expose: true
+        
+feniu_frontend_forum_category_add:
+    path:     /forum/category/dodaj/{name}
+    defaults: { _controller: FeniuFrontendBundle:Forum:categoryAdd }    
+    
+feniu_frontend_friend_add:
+    path:     /profil/przyjaciele/dodaj
+    defaults: { _controller: FeniuFrontendBundle:User:Addfriend }    
+    options:
+        expose: true
+        
+feniu_frontend_clear_notification:
+    path:     /profil/powiadomienia/czysc
+    defaults: { _controller: FeniuFrontendBundle:User:clearNotification }    
+    options:
+        expose: true
+        
+feniu_frontend_all_notification:
+    path:     /profil/{slug}/powiadomienia
+    defaults: { _controller: FeniuFrontendBundle:User:allNotification }    
+    options:
+        expose: true
+        
+        
+feniu_frontend_clear_one_notification:
+    path:     /profil/edit/powiadomienia/czyscjeden
+    defaults: { _controller: FeniuFrontendBundle:User:clearOneNotification }    
+    options:
+        expose: true

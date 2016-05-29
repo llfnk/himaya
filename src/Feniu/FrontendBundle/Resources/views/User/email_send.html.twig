@@ -1,0 +1,75 @@
+{% extends 'FeniuFrontendBundle::layout_main.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }} 
+    <link href="{{ asset('bundles/feniufrontend/css/summernote.css') }}" rel="stylesheet" />
+
+{% endblock %}
+
+
+
+{% block content %}
+    <!-- Main Container starts -->
+    <div class="main-container-full">
+
+        <!-- Container fluid Starts -->
+        <div class="container-fluid">
+
+            <!-- Spacer Starts -->
+            <div class="spacer">
+
+
+                <div class="row">
+                    <div id="add_topic_body" style="">
+                        {{ form_start(form) }}
+                        {{ form_widget(form.to, { 'attr': {'class': 'form-control'}  }) }}
+                        {#<div class="summernote"></div>#}
+                        {{ form_widget(form.text, { 'attr': { 'novalidate': 'true'}  }) }}
+                        {{ form_widget(form.wyslij, { 'attr': {'class': 'form-control', 'novalidate': 'true'} }) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- Spacer Ends -->
+
+        </div>
+        <!-- Container fluid ends -->
+
+    </div>
+    <!-- Main Container ends -->
+
+
+
+
+{% endblock %}
+
+
+
+{% block javascripts %}
+    {{ parent() }} 
+    <script src="{{ asset('bundles/feniufrontend/js/frontend/forum/forum.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/feniufrontend/js/summernote/summernote.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        // Default
+        $(document).ready(function () {
+            $('.summernote').summernote({height: 280});
+        });
+
+        // Modal
+        $(function () {
+            $('#dropper').on('shown.bs.modal', function () {
+                $('#dropping').summernote({height: 280, focus: true});
+            }).on('hidden.bs.modal', function () {
+                $('#dropping').destroy();
+            });
+        });
+    </script>
+
+
+{% endblock %}
+
+
+

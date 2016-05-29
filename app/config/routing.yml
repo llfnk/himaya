@@ -1,0 +1,30 @@
+feniu_company:
+    resource: "@FeniuCompanyBundle/Resources/config/routing.yml"
+    prefix:   /
+
+feniu_forum:
+    resource: "@FeniuForumBundle/Resources/config/routing.yml"
+    prefix:   /
+
+feniu_user:
+    resource: "@FeniuUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+feniu_frontend:
+    resource: "@FeniuFrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+
+_cmf_create:
+    resource: "@CmfCreateBundle/Resources/config/routing/rest.xml"
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"    

@@ -1,0 +1,4 @@
+services:
+#    feniu_user.example:
+#        class: Feniu\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

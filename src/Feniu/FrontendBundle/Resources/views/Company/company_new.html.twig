@@ -1,0 +1,75 @@
+{% extends 'FeniuFrontendBundle::layout_main.html.twig' %}
+
+
+
+
+
+
+
+
+
+
+{% block content %}
+
+    <!-- Main Container starts -->
+    <div class="main-container-full">
+
+        <!-- Container fluid Starts -->
+        <div class="container-fluid">
+
+            <!-- Spacer starts -->
+            <div class="spacer">
+
+                <!-- Row Starts -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="blog">
+                            <div class="blog-header">
+                                <h5 class="blog-title">Stwórz firmę</h5>
+                            </div>
+                            {{ form_start(form) }}
+                            <div class="blog-body">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label class="control-label">Imię:</label>
+                                                {{ form_widget(form.name, { 'attr': {'class': 'form-control'}  }) }}
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                            {{ form_widget(form.zapisz, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
+                                    {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+                <!-- Row Ends -->
+
+               
+
+            </div>
+            <!-- Spacer ends -->
+
+        </div>
+        <!-- Container fluid ends -->
+
+    </div>
+    <!-- Main Container ends -->
+
+{% endblock %}
+
+
+{#    {% block javascripts %}
+        <script src="{{ asset('bundles/feniufrontend/js/summernote/summernote.js') }}" type="text/javascript"></script>
+
+        
+{% endblock %}#}
+
+
+{% block javascripts %}
+    {{ parent() }} 
+
+{% endblock %}
+
+

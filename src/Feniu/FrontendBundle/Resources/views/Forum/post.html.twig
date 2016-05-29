@@ -1,0 +1,191 @@
+{% extends 'FeniuFrontendBundle::layout_main.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+        <link href="{{ asset('bundles/feniufrontend/css/summernote.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/feniufrontend/fonts/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/feniufrontend/fonts/metrize.css') }}" rel="stylesheet" />
+{% endblock %}
+
+
+
+
+
+
+
+
+
+{% block content %}
+    
+    
+    <!-- Main Container starts -->
+    <div class="main-container-full">
+
+        <!-- Container fluid Starts -->
+        <div class="container-fluid">
+
+            <!-- Spacer starts -->
+            <div class="spacer">
+
+                <!-- Row starts -->
+                
+                {% for article in pagination %}
+              
+                   
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                         <section id="{{article.id}}">
+                    <div class="blog">
+                        <div class="blog-header">
+                            <!-- Row starts -->
+                            <div class="row">
+                                                                <div class="col-lg-1 col-md-2 col-sm-3 col-xs-3">
+                                    <img src="{{ asset('bundles/feniufrontend/images/user5.jpg') }}" alt="User" class="blog-post-user img-responsive" style="float: left;">
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-9">
+                                    <p class="date-time">
+                                        <span class="day">
+                                            <a href="#{{article.id}}"><i class="fa fa-file-word-o"></i></a> &nbsp
+                                        </span>
+                                        <span class="day">
+                                            <i class="fa fa-calendar"></i> {{article.date|date("d.m.Y H:i")}}
+                                        </span>
+                                        <span class="day">
+                                            <i class="fa fa-user"></i> {{article.author.useruserdata.name}} {{article.author.useruserdata.surname}}
+                                        </span>
+                                    </p>
+                                </div>
+
+                            </div>
+                            <!-- Row ends -->
+                        </div>
+                        <div class="row">
+                           
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                                <div class="blog-body">
+                                    <div class="blog-content">
+                                       {{ article.text|raw }}
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                        <div class="blog-footer">
+                            <!-- Row starts -->
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                                    <ul class="social-icons">
+                                        <li>
+                                            <a href="https://twitter.com/intent/tweet?url='{{ app.request.uri }}#{{ article.id }}'&text=Udostępniany na twitterze tekst&via=kacperkrzak" target="_blank">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="http://www.facebook.com/sharer/sharer.php?s=100&p[url]='{{ app.request.uri }}#{{ article.id }}'&p[images][1]={{ app.request.uri }}&p[title]=tytuł strony&p[summary]=zajawka” target="_blank">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            
+                                            
+                                           
+                                            
+                                            
+                                            
+                                            
+                                            <a href="#" data-toggle="tooltip" data-placement="top" title="Linkedin">
+                                                <i class="fa fa-quote-right"></i>
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Row ends -->
+                        </div>
+                    </div>								
+
+                    <!-- Row ends -->
+
+
+            </section>
+                </div>
+                
+
+                    {% endfor %}            
+                                
+                                
+                                                <div class="row">
+                <div id="add_topic_body" >
+                    <div class="summernote"></div>
+                    <button class="btn btn-default" id="add_post" data-topic-number="{{pagination[0].topic.id}}">Dodaj post</button>
+                </div>
+            </div>     
+                                
+                              
+                    
+                                
+                                
+                <!-- Row ends -->
+
+            </div>
+            <!-- Spacer ends -->
+
+
+            
+        </div>
+        <!-- Container fluid ends -->
+
+
+        
+    </div>
+    <!-- Main Container ends -->
+    
+    <div class="navigation" >
+    {{ knp_pagination_render(pagination) }}
+</div>
+
+
+    
+    
+
+
+{% endblock %}
+
+
+{#    {% block javascripts %}
+        <script src="{{ asset('bundles/feniufrontend/js/summernote/summernote.js') }}" type="text/javascript"></script>
+
+        
+{% endblock %}#}
+
+
+{% block javascripts %}
+    {{ parent() }}
+        <script src="{{ asset('bundles/feniufrontend/js/summernote/summernote.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/feniufrontend/js/frontend/forum/forum.js') }}" type="text/javascript"></script>
+            <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        
+    
+        <script type="text/javascript">
+        // Default
+        $(document).ready(function () {
+            $('.summernote').summernote({height: 280});
+        });
+
+        // Modal
+        $(function () {
+            $('#dropper').on('shown.bs.modal', function () {
+                $('#dropping').summernote({height: 280, focus: true});
+            }).on('hidden.bs.modal', function () {
+                $('#dropping').destroy();
+            });
+        });
+    </script>
+
+{% endblock %}
+
+
+

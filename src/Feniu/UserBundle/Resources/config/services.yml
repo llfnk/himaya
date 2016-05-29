@@ -1,0 +1,14 @@
+parameters:
+    acme_user.activity_listener.class: Feniu\UserBundle\EventListener\ActivityListener
+
+services:
+    feniu_user.registration.form.type:
+        class: Feniu\UserBundle\Form\Type\RegistrationFormType
+        tags:
+            - { name: form.type, alias: feniu_user_registration }
+            
+    acme_user.activity_listener:
+        class: %acme_user.activity_listener.class%
+        arguments: [@security.context, @fos_user.user_manager]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }

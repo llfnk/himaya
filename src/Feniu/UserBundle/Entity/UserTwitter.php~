@@ -1,0 +1,47 @@
+<?php
+
+// src/Acme/UserBundle/Entity/User.php
+
+namespace Feniu\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\EntityListeners;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user_twitter")
+ */
+class UserTwitter {
+
+    const UserTwitter = 'Feniu\UserBundle\Entity\UserTwitter';
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="string", length=255)
+     */
+    protected $text;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    private $Date;
+
+    /**
+     * @var from
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *
+     */
+    protected $user;
+
+}

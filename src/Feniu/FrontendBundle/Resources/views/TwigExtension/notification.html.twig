@@ -1,0 +1,95 @@
+<li class="list-box dropdown hidden-xs">
+    <a id="drop7" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-user"></i>
+    </a>
+    
+    {% if notification|length %}<span class="info-label danger-bg animated rubberBand">{{notification|length}}  </span>{% endif %}
+    <ul class="dropdown-menu bounceIn animated messages">
+        <li class="plain">
+            Zaproszenia
+        </li>
+
+
+        {% for friend in friends %}
+            <li>
+                <div class="user-pic">
+                    <i class="fa fa-plus fa-3x"></i>
+                </div>
+                <div class="details">
+                    <strong class="text-danger">22.01:2015</strong>
+                    <span>{{ friend.invitefrom }} wysłał(a) Ci zaproszenie do przyjaciół </span>
+                    <span>Akceptuj</span><span>Odrzuć</span>
+                    <div class="progress progress-xs no-margin">
+                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</li>   
+
+
+
+
+<li class="list-box dropdown hidden-xs">
+    <a id="drop7" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-envelope"></i>
+    </a>
+    {% if notification|length %}<span class="info-label danger-bg animated rubberBand">{{notification|length}}  </span>{% endif %}
+    <ul class="dropdown-menu bounceIn animated messages">
+        <li class="plain">
+            Wiadomości
+        </li>
+
+
+        {% for note in notification %}
+            <li>
+                <div class="user-pic">
+                    <img src="{{ asset('bundles/feniufrontend/images/user4.jpg') }}" alt="User">
+                </div>
+                <div class="details">
+                    <strong class="text-danger">{{ note.date|date("d.m.Y H:i") }}</strong>
+                    <span>{{ note.text }} </span>
+                    <div class="progress progress-xs no-margin">
+                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</li>                    
+
+
+
+
+
+<li class="list-box dropdown hidden-xs">
+    <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+        <i class="fa fa-bell"></i>
+    </a>
+    {% if notification|length %}<span class="info-label danger-bg animated rubberBand">{{notification|length}}  </span>{% endif %}
+    <ul class="dropdown-menu bounceIn animated messages">
+        <li class="plain">
+            Powiadomienia
+        </li>
+
+
+        {% for note in notification %}
+            <li>
+                <div class="user-pic">
+                    <img src="{{ asset('bundles/feniufrontend/images/user4.jpg') }}" alt="User">
+                </div>
+                <div class="details">
+                    <strong class="text-danger">{{ note.date|date("d.m.Y H:i") }}</strong>
+                    <span>{{ note.text }} </span>
+                    <div class="progress progress-xs no-margin">
+                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                        </div>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</li>

@@ -1,0 +1,207 @@
+<?php
+
+namespace Feniu\CompanyBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\EntityListeners;
+use Feniu\UserBundle\Entity\User;
+
+/**
+ * Topic
+ *
+ * @ORM\Table(name="company_businessuser")
+ * @ORM\Entity(repositoryClass="Feniu\CompanyBundle\Repository\BusinessUserRepository")
+ * 
+ */
+class BusinessUser {
+
+    const BusinessUser = 'Feniu\CompanyBundle\Entity\BusinessUser';
+    
+    
+        /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    
+    /**
+     * @var User
+     * @ORM\OneToOne(targetEntity="Feniu\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * @var User
+     * @ORM\OneToOne(targetEntity="Feniu\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="business", referencedColumnName="id")
+     */
+    protected $business;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="salary", type="integer")
+     */
+    protected $salary;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    private $dateFirstWork;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    private $dateWork;
+
+    /**
+     * @ORM\Column(type="boolean", name="is_worked")
+     */
+    private $is_worked;
+
+
+    /**
+     * Set salary
+     *
+     * @param integer $salary
+     * @return BusinessUser
+     */
+    public function setSalary($salary)
+    {
+        $this->salary = $salary;
+
+        return $this;
+    }
+
+    /**
+     * Get salary
+     *
+     * @return integer 
+     */
+    public function getSalary()
+    {
+        return $this->salary;
+    }
+
+    /**
+     * Set dateFirstWork
+     *
+     * @param \DateTime $dateFirstWork
+     * @return BusinessUser
+     */
+    public function setDateFirstWork($dateFirstWork)
+    {
+        $this->dateFirstWork = $dateFirstWork;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFirstWork
+     *
+     * @return \DateTime 
+     */
+    public function getDateFirstWork()
+    {
+        return $this->dateFirstWork;
+    }
+
+    /**
+     * Set dateWork
+     *
+     * @param \DateTime $dateWork
+     * @return BusinessUser
+     */
+    public function setDateWork($dateWork)
+    {
+        $this->dateWork = $dateWork;
+
+        return $this;
+    }
+
+    /**
+     * Get dateWork
+     *
+     * @return \DateTime 
+     */
+    public function getDateWork()
+    {
+        return $this->dateWork;
+    }
+
+    /**
+     * Set is_worked
+     *
+     * @param boolean $isWorked
+     * @return BusinessUser
+     */
+    public function setIsWorked($isWorked)
+    {
+        $this->is_worked = $isWorked;
+
+        return $this;
+    }
+
+    /**
+     * Get is_worked
+     *
+     * @return boolean 
+     */
+    public function getIsWorked()
+    {
+        return $this->is_worked;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Feniu\UserBundle\Entity\User $user
+     * @return BusinessUser
+     */
+    public function setUser(\Feniu\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Feniu\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set business
+     *
+     * @param \Feniu\UserBundle\Entity\User $business
+     * @return BusinessUser
+     */
+    public function setBusiness(\Feniu\UserBundle\Entity\User $business = null)
+    {
+        $this->business = $business;
+
+        return $this;
+    }
+
+    /**
+     * Get business
+     *
+     * @return \Feniu\UserBundle\Entity\User 
+     */
+    public function getBusiness()
+    {
+        return $this->business;
+    }
+}

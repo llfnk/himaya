@@ -1,0 +1,4 @@
+services:
+#    feniu_forum.example:
+#        class: Feniu\ForumBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

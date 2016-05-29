@@ -1,0 +1,46 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+            <title>Network Helper Dashboard</title>
+
+            <!-- Error CSS -->
+                    {% block stylesheets %}
+           <link href="{{ asset('bundles/feniufrontend/css/login.css') }}" rel="stylesheet" />
+           <link href="{{ asset('bundles/feniufrontend/css/animate.css') }}" rel="stylesheet" />
+           <link href="{{ asset('bundles/feniufrontend/fonts/font-awesome.min.css.css') }}" rel="stylesheet" />
+        {% endblock %}
+            
+            
+            
+            
+            <link href="css/login.css" rel="stylesheet" media="screen">
+
+            <!-- Animate CSS -->
+            <link href="css/animate.css" rel="stylesheet" media="screen">
+
+            <!-- Font Awesome -->
+            <link href="fonts/font-awesome.min.css" rel="stylesheet">
+        </head>
+        <body>
+            {#<img src="{{ asset('bundles/feniufrontend/images/logo.png')}}" alt="Symfony!" />#}
+            
+                <div id="box" class="animated bounceIn">
+                    <div id="top_header">
+                        <a href="#">
+                            <img class="logo" src="{{ asset('bundles/feniufrontend/images/logo.png')}}" alt="logo">
+                        </a>
+                        <h5>
+                            Zaloguj się, żeby odwiedzić Himaya<br />
+                            lub jeżeli nie masz konta to     <a href="register">zarejestruj się</a>
+                        </h5>
+                    </div>
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+                </div>
+        </body>
+    </html>
+{% endblock body %}

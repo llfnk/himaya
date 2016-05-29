@@ -1,0 +1,30 @@
+admin_category:
+    path:     /
+    defaults: { _controller: "FeniuForumBundle:Category:index" }
+
+admin_category_show:
+    path:     /{id}/show
+    defaults: { _controller: "FeniuForumBundle:Category:show" }
+
+admin_category_new:
+    path:     /new
+    defaults: { _controller: "FeniuForumBundle:Category:new" }
+
+admin_category_create:
+    path:     /create
+    defaults: { _controller: "FeniuForumBundle:Category:create" }
+    methods:  POST
+
+admin_category_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "FeniuForumBundle:Category:edit" }
+
+admin_category_update:
+    path:     /{id}/update
+    defaults: { _controller: "FeniuForumBundle:Category:update" }
+    methods:  [POST, PUT]
+
+admin_category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "FeniuForumBundle:Category:delete" }
+    methods:  [POST, DELETE]

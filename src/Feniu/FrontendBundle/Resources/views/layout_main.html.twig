@@ -1,0 +1,237 @@
+{#{% if is_granted('ROLE_USER') %}
+    <p>
+        <a href="{{ path('fos_user_security_logout') }}">
+            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+        </a>
+    </p>
+{% endif %}  #}
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Himaya.pl</title>
+        <meta name="description" content="Cloud Admin Panel" />
+        <meta name="keywords" content="Admin, Dashboard, Bootstrap3, Sass, transform, CSS3, HTML5, Web design, UI Design, Responsive Dashboard, Responsive Admin, Admin Theme, Best Admin UI, Bootstrap Theme, Bootstrap, Light weight Admin Dashboard,Light weight, Light weight Admin, Light weight Dashboard" />
+        <meta name="author" content="Feniu" />
+        <link rel="shortcut icon" href="img/favicon.ico">
+
+        {% block stylesheets %}
+            <link href="{{ asset('bundles/feniufrontend/css/bootstrap.min.css') }}" rel="stylesheet" />
+            <link href="{{ asset('bundles/feniufrontend/css/animate.css') }}" rel="stylesheet" />
+            <link href="{{ asset('bundles/feniufrontend/css/alertify/alertify.core.css') }}" rel="stylesheet" />
+            <link href="{{ asset('bundles/feniufrontend/css/alertify/alertify.default.css') }}" rel="stylesheet" />
+            <link href="{{ asset('bundles/feniufrontend/css/main.css') }}" rel="stylesheet" />
+            <link href="{{ asset('bundles/feniufrontend/fonts/font-awesome.min.css') }}" rel="stylesheet" />
+
+        {% endblock %}
+
+
+
+
+
+
+
+
+        <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+                <script src="js/html5shiv.js"></script>
+                <script src="js/respond.min.js"></script>
+        <![endif]-->
+
+    </head>  
+
+    <body>
+
+        <!-- Header Start -->
+        <header>
+            <!-- Logo starts -->
+            <div class="logo">
+                <a href="#">
+                    <img src="{{ asset('bundles/feniufrontend/images/logo.png') }}" alt="logo">
+                    <span class="menu-toggle hidden-xs">
+                        <i class="fa fa-bars"></i>
+                    </span>
+                </a>
+            </div>
+            <!-- Logo ends -->
+
+            <!-- Custom Search Starts -->
+            <div class="custom-search pull-left hidden-xs hidden-sm">
+                <input type="text" class="search-query" placeholder="Szukaj...">
+                <i class="fa fa-search"></i>
+            </div>
+            <!-- Custom Search Ends -->
+
+            <!-- Mini right nav starts -->
+            <div class="pull-right">
+                <ul id="mini-nav" class="clearfix">
+                    <li class="list-box hidden-lg hidden-md hidden-sm" id="mob-nav">
+                        <a href="#">
+                            <i class="fa fa-reorder"></i>
+                        </a>
+                    </li>
+                    
+                   
+                    {{ layout_notification() }}
+
+                    <li class="list-box user-profile hidden-xs">
+                        <a href="{{ path('feniu_frontend_user_profil', {'slug': userdata.slug}) }}" class="user-avtar animated rubberBand">
+                            <img src="{{ asset('bundles/feniufrontend/images/user4.jpg') }}" alt="user avatar">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Mini right nav ends -->
+
+        </header>
+        <!-- Header ends -->
+
+        <!-- Left sidebar starts -->
+        <aside id="sidebar">
+
+            <!-- Current User Starts -->
+            <div class="current-user">
+                <div class="user-avatar animated rubberBand">
+                    <img src="{{ asset('bundles/feniufrontend/images/user4.jpg') }}" alt="Current User">
+                    <span class="busy"></span>
+                </div>
+               {{ layout_hello() }}
+                <ul class="user-links">
+                    <li>
+                        <a href="{{ path('feniu_frontend_user_profil', {'slug': userdata.slug}) }}">
+                            <i class="fa fa-user text-success"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="invoice.html">
+                            <i class="fa fa-file-pdf-o text-warning"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('feniu_frontend_user_edit')}}">
+                            <i class="fa fa-sliders text-info"></i>
+                        </a> 
+                    </li>
+                    <li>
+                        <a href="{{ path('fos_user_security_logout')}}">
+                            <i class="fa fa-sign-out text-danger"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Current User Ends -->
+
+            <!-- Menu start -->
+            <div id='menu'>
+                <ul>
+                    <li class="highlight">
+                        <a href='{{ path('feniu_frontend_homepage') }}'>
+                            <i class="fa fa-desktop"></i>
+                            <span>Strona Główna</span>
+                            <span class="current-page"></span>
+                        </a>
+                    </li>
+                    
+                    <li class='has-sub'>
+                        <a href='#'>
+                            <i class="fa fa-tasks"></i> 
+                            <span>Profil</span>
+                        </a>
+                        <ul>
+                                <li>
+                                    <a href="{{ path('feniu_frontend_user_profil', {'slug': userdata.slug}) }}">
+                                        <span>Profil</span>
+                                    </a>
+                                </li>
+                                                                <li>
+                                    <a href="{{ path('feniu_frontend_all_notification', {'slug': userdata.slug}) }}">
+                                        <span>Powiadomienia</span>
+                                    </a>
+                                </li>
+                                                                <li>
+                                    <a href="{{ path('feniu_frontend_user_email') }}">
+                                        <span>Poczta</span>
+                                    </a>
+                                </li>
+
+                        </ul>
+                    </li>
+
+                    {{ layout_menu() }}
+
+                </ul>
+            </div>
+            <!-- Menu End -->
+
+            <!-- Freebies Starts -->
+            <div class="freebies">
+
+                <!-- Sidebar Extras -->      
+                <div class="sidebar-addons">
+                    <ul class="views">
+
+                        <li>
+                            <i class="fa fa-circle-o text-info"></i>
+                            <div class="details">
+                                <p>Użytkowników Online</p>
+                            </div>
+                            <span class="label label-info">1</span>
+                        </li>      
+                    </ul>
+                </div>
+
+            </div>
+            <!-- Freebies Starts -->
+
+        </aside>
+        <!-- Left sidebar ends -->
+
+        <!-- Dashboard Wrapper starts -->
+        <div class="dashboard-wrapper">
+
+            <!-- Top Bar starts -->
+            <div class="top-bar">
+                <div class="page-title">
+                    Dashboard
+                </div>
+
+            </div>
+            <!-- Top Bar ends -->
+
+
+
+            {% block content %}
+            {% endblock %}
+
+            <!-- Footer starts -->
+            <footer>
+                Copyright Everest Admin Panel 2014.
+            </footer>
+            <!-- Footer ends -->
+            <!-- Footer ends -->
+
+        </div>
+
+        {% block javascripts %}
+            <script src="{{ asset('bundles/feniufrontend/js/jquery.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/feniufrontend/js/bootstrap.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/feniufrontend/js/sparkline.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/feniufrontend/js/scrollup//jquery.scrollUp.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/feniufrontend/js/alertify/alertify.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/feniufrontend/js/alertify/alertify-custom.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/feniufrontend/js/custom.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/feniufrontend/js/frontend/profil/user.js') }}" type="text/javascript"></script>
+            <script type="text/javascript" src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script type="text/javascript" src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+        {% endblock %}
+
+
+    </body>
+</html>

@@ -1,0 +1,50 @@
+{% extends 'FeniuFrontendBundle::layout_main.html.twig' %}
+
+
+{% block content %}
+    <!-- Main Container starts -->
+    <div class="main-container-full">
+
+        <!-- Container fluid Starts -->
+        <div class="container-fluid">
+
+            <!-- Spacer Starts -->
+            <div class="spacer">
+
+
+                <div class="col-lg-12 col-md-12 col-sx-12 col-sm-12">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Powiadomienia</h4>
+                        </div>
+                        <div class="panel-body">
+                            {% for notification in usernotifications %}
+                            <div class="alert alert-info alert-white rounded">
+                                <button type="button" data-ntnr="{{notification.id}}" class="close nt-close" data-dismiss="alert" aria-hidden="true">x</button>
+                                <div class="icon"><i class="fa fa-info"></i></div>
+                                <strong> {{notification.date|date("d.m.Y H:i")}}</strong> {{notification.text}}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Row End -->
+
+        </div>
+        <!-- Spacer Ends -->
+
+    </div>
+    <!-- Container fluid ends -->
+
+{% endblock %}
+
+
+
+{% block javascripts %}
+    {{ parent() }} 
+
+{% endblock %}
+
+
+

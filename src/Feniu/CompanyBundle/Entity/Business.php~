@@ -1,0 +1,71 @@
+<?php
+
+namespace Feniu\CompanyBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\EntityListeners;
+use Feniu\UserBundle\Entity\User;
+
+/**
+ * Topic
+ *
+ * @ORM\Table(name="company_business")
+ * @ORM\Entity(repositoryClass="Feniu\CompanyBundle\Repository\BusinessRepository")
+ * 
+ */
+class Business
+{
+    
+    const Business = 'Feniu\CompanyBundle\Entity\Business';
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    protected $name;
+    
+    
+    /**
+    * @var \DateTime
+    * @ORM\Column(type="datetime")
+    */
+    private $Date;
+    
+    /**
+     *@var Company
+     *@ORM\ManyToOne(targetEntity="Company", inversedBy="Business")
+     *@ORM\JoinColumn(name="company_id", referencedColumnName="id", nullable=false)
+     */
+    protected $company;
+    
+        /**
+     * @var BusinessUser[]
+     *
+     * @ORM\OneToOne(targetEntity="Feniu\CompanyBundle\Entity\BusinessUser", mappedBy="business", cascade={"persist"})
+     */
+    protected $businessUser;
+    
+    /**
+     * @var BusinessOffer[]
+     *
+     * @ORM\OneToMany(targetEntity="Business", mappedBy="business", cascade={"persist"})
+     */
+    protected $businessOffer;
+    
+
+
+  
+
+    
+}

@@ -1,0 +1,57 @@
+<?php
+
+namespace Feniu\CompanyBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\EntityListeners;
+use Feniu\UserBundle\Entity\User;
+
+/**
+ * Topic
+ *
+ * @ORM\Table(name="company_newspaper")
+ * @ORM\Entity(repositoryClass="Feniu\CompanyBundle\Repository\NewspaperRepository")
+ * 
+ */
+class Newspaper
+{
+    
+    const Newspaper = 'Feniu\CompanyBundle\Entity\Newspaper';
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    protected $name;
+    
+    
+    /**
+    * @var \DateTime
+    * @ORM\Column(type="datetime")
+    */
+    private $Date;
+    
+    /**
+     *@var Company
+     *@ORM\ManyToOne(targetEntity="Company", inversedBy="Newspaper")
+     *@ORM\JoinColumn(name="company_id", referencedColumnName="id", nullable=false)
+     */
+    protected $company;
+    
+
+
+  
+
+    
+}

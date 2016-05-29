@@ -1,0 +1,4 @@
+services:
+#    feniu_company.example:
+#        class: Feniu\CompanyBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

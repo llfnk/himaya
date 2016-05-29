@@ -1,0 +1,49 @@
+<?php
+
+// src/Acme/UserBundle/Entity/User.php
+
+namespace Feniu\UserBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\EntityListeners;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user_friends")
+ */
+class UserFriends {
+
+    const UserFriends = 'Feniu\UserBundle\Entity\UserFriends';
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @var invitefrom
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="invitefrom", referencedColumnName="id")
+     *
+     */
+    protected $invitefrom;
+
+    /**
+     * @var inviteto
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="inviteto", referencedColumnName="id")
+     *
+     */
+    protected $inviteto;
+
+    /**
+     * @ORM\Column(type="boolean", name="is_right", options={"default": false})
+     */
+    private $is_right;
+
+
+
+}
