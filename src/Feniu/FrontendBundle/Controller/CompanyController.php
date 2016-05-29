@@ -16,91 +16,70 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class CompanyController extends Controller {
 
-    public function indexAction(Request $Request) {
-        $em = $this->getDoctrine()->getEntityManager();
-        $form = $this->createForm(new CompanyType());
-        
-        $userid=$this->getUser()->getId();
-         $user=$em->getRepository(User::User)->find($userid);
-         $userdata = $em->getRepository(UserData::UserData)->findOneByUserlogin($user);
+    public function indexAction(Request $request) {
+        $em = $this->get('doctrine.orm.entity_manager');
+                $translator = $this->get('translator');
+        $companyForm = $this->getObjectForm(null, 'Feniu\CompanyBundle\Entity\Company', 'Feniu\FrontendBundle\Form\Company\CompanyType');
+        $user = $this->getUser();
+        $userdata = $em->getRepository(UserData::UserData)->findOneByUserlogin($user);
         $test = new \DateTime();
 
-                 echo '<pre>';
-        \Doctrine\Common\Util\Debug::dump($test);
-        echo '</pre>';
-        die();
+//                 echo '<pre>';
+//        \Doctrine\Common\Util\Debug::dump($test);
+//        echo '</pre>';
+//        die();
 
-        
-         $form->handleRequest($Request);
-        if($form->isValid()){
-            $name=$form->get('name')->getData();
-            
-            
-            $company = new Company();
-            $company->setName($name);
-            $company->setUser($user);
-            $company->setDate(new \DateTime());
-            $em->persist($company);
-            $em->flush();
-                    $this->get('session')->getFlashBag()->add('success', 'The task has been added successfully!');
- 
+                if ($request->getMethod() == 'POST') {
+            $companyForm->handleRequest($request);
+            if ($companyForm->isValid()) {
+                $company = $companyForm->getData();
+
+                $company->setUser($user);
+                $em->persist($company);
+                $em->flush();
+                $this->addFlash('success', $translator->trans('Form.CreateSuccessMessage', array(), 'Frontend'));
+                return $this->redirectToRoute('feniu_frontend_company_show', array('slug' => $company->getSlug()));
+            } else {
+                $this->addFlash('danger', $translator->trans('Form.CreateFailureMessage', array(), 'Frontend'));
+            }
         }
-
-        
-        
-        
-        
         
 
 
-        return $this->render('FeniuFrontendBundle:Company:company_new.html.twig', array('userdata' => $userdata,'form' => $form->createView()));
+        return $this->render('FeniuFrontendBundle:Company:company_new.html.twig', array('userdata' => $userdata, 'form' => $companyForm->createView()));
     }
-    
-        public function showCompanyAction(Request $Request) {
+
+    public function showCompanyAction(Request $request, $slug) {
         $em = $this->getDoctrine()->getEntityManager();
 //        $form = $this->createForm(new BusinessType());
 //        
 //        $userid=$this->getUser()->getId();
 //         $user=$em->getRepository(User::User)->find($userid);
 //         $userdata = $em->getRepository(UserData::UserData)->findOneByUserlogin($user);
-         
-         $company = $em->getRepository(Company::Company)->find(1);
+
+        $company = $em->getRepository(Company::Company)->findOneBySlug($slug);
+                $user = $this->getUser();
+        $userdata = $em->getRepository(UserData::UserData)->findOneByUserlogin($user);
 //         $business = $em->getRepository(Business::Business)->findByCompany($company);
+ $breadcrumbs = $this->get("white_october_breadcrumbs");
+     $breadcrumbs->addItem("Home", $this->get("router")->generate("feniu_frontend_homepage"));
 
-                 echo '<pre>';
-        \Doctrine\Common\Util\Debug::dump($company);
-        echo '</pre>';
-        die();
-
-        
-         $form->handleRequest($Request);
-        if($form->isValid()){
-            $name=$form->get('name')->getData();
-            
-            
-            $business = new Business();
-            $business->setName($name);
-            $business->setCompany($company);
-            $business->setDate(new \DateTime());
-            $em->persist($business);
-            $em->flush();
-                    $this->get('session')->getFlashBag()->add('success', 'The task has been added successfully!');
- 
-        }
-
-        
-        
-        
-        
-        
+    // Example without URL
+    $breadcrumbs->addItem("Some text without link");
+//        echo '<pre>';
+//        \Doctrine\Common\Util\Debug::dump($company);
+//        echo '</pre>';
+//        die();
 
 
-        return $this->render('FeniuFrontendBundle:Company:company.html.twig', array('userdata' => $userdata, 'company' => $company,'form' => $form->createView()));
+        return $this->render('FeniuFrontendBundle:Company:company.html.twig', array('userdata' => $userdata, 'company' => $company, ));
     }
-    
-    
 
-    
-       
+    public function getObjectForm($object = null, $objectname = null, $formname = null) {
+        if (null === $object) {
+            $object = new $objectname();
+        }
+        return $this->createForm(new $formname($this->container), $object);
+    }
 
 }

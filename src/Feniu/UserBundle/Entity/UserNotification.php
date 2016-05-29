@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping\EntityListeners;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="user_notification")
+ * @ORM\Table(name="fos_user_notification")
  */
 class UserNotification {
 

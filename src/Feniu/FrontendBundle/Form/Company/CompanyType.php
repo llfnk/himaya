@@ -16,7 +16,7 @@ class CompanyType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('name', 'text', array( 'attr' => array('placeholder' => 'Twoje imie*', 'id' => 'mailtag')))
+                ->add('name', 'text', array( 'attr' => array('placeholder' => 'Nazwa firmy*', 'id' => 'mailtag', 'required' => true)))
                 ->add('zapisz', 'submit');
     }
 

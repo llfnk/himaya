@@ -53,7 +53,7 @@ class Company
      /**
      *@var User
      *@ORM\OneToOne(targetEntity="Feniu\UserBundle\Entity\User")
-     *@ORM\JoinColumn(name="user", referencedColumnName="id")
+     *@ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
     

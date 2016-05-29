@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="user_data")
+ * @ORM\Table(name="fos_user_data")
  * @UniqueEntity(fields="surname")
  */
 class UserData

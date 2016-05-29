@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping\EntityListeners;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="user_mails")
+ * @ORM\Table(name="fos_user_mails")
  */
 class UserMails {
 

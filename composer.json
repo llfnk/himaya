@@ -34,11 +34,15 @@
 		"friendsofsymfony/user-bundle": "~2.0@dev",
         "jackalope/jackalope-doctrine-dbal": "1.1.*",
         "nelmio/alice": "~1.0",
-        "friendsofsymfony/jsrouting-bundle": "~1.5",
+        "friendsofsymfony/jsrouting-bundle": "~1.5.4",
         "stof/doctrine-extensions-bundle": "~1.1@dev",
         "knplabs/knp-paginator-bundle": "^2.4",
         "egeloen/ckeditor-bundle": "^3.0",
-		"cunningsoft/chat-bundle": "0.4.*"
+		"cunningsoft/chat-bundle": "0.4.*",
+        "jms/di-extra-bundle": "~1.7",
+		"ali/datatable": "~2.0",
+        "fp/jsformvalidator-bundle": "v1.2",
+        "whiteoctober/breadcrumbs-bundle": "~1.2"
     },
     "require-dev": {
         "liip/functional-test-bundle": "~1.0",

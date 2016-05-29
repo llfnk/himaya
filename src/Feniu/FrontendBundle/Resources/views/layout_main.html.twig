@@ -162,6 +162,21 @@
 
                         </ul>
                     </li>
+                                        <li class='has-sub'>
+                        <a href='#'>
+                            <i class="fa fa-tasks"></i> 
+                            <span>Firma</span>
+                        </a>
+                        <ul>
+                                <li>
+                                    <a href="{{ path('feniu_frontend_company_new') }}">
+                                        <span>Nowa firma</span>
+                                    </a>
+                                </li>
+
+
+                        </ul>
+                    </li>
 
                     {{ layout_menu() }}
 
@@ -198,7 +213,7 @@
             <!-- Top Bar starts -->
             <div class="top-bar">
                 <div class="page-title">
-                    Dashboard
+                    {{ wo_render_breadcrumbs() }}
                 </div>
 
             </div>

@@ -38,7 +38,7 @@ feniu_frontend_company_new:
     defaults: { _controller: FeniuFrontendBundle:Company:index }        
     
 feniu_frontend_company_show:
-    path:     /koncern/pokaz
+    path:     /koncern/pokaz/{slug}
     defaults: { _controller: FeniuFrontendBundle:Company:showCompany }
     
 feniu_frontend_business_show_offer:

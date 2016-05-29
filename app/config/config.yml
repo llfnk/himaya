@@ -147,3 +147,5 @@ ivory_ck_editor:
     configs:
         my_config:
             skin: "office2013,bundles/ivoryckeditor/skins/office2013" # ex: ckeditor/skins/skin_name/ if you placed in the web directory
+           
+white_october_breadcrumbs: ~
